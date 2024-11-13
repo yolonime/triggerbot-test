@@ -1,11 +1,12 @@
 import numpy as np
 from mss import mss
 from ctypes import WinDLL
-import time
 
 # Obtenir les dimensions de l'écran
 user32 = WinDLL("user32", use_last_error=True)
-WIDTH, HEIGHT = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
+WIDTH, HEIGHT = 1920, 1080  # Valeurs par défaut
+print ("Largeur de l'écran:", WIDTH)
+print ("Hauteur de l'écran:", HEIGHT)
 
 # Définir une zone de capture de 1x1 pixel au centre de l'écran
 CENTER_PIXEL = {
@@ -16,6 +17,7 @@ CENTER_PIXEL = {
 }
 
 def main():
+    print ("Début du programme")
     with mss() as sct:
         while True:
             # Capture un seul pixel au centre de l'écran
@@ -23,10 +25,12 @@ def main():
 
             # Le pixel capturé est la couleur du centre
             pixel_color = img[0, 0]  # Couleur du pixel unique au centre
+            if np.array_equal(pixel_color, [106, 219, 75]):
+                # La souris se déplace au centre de l'écran
+                    # user32.SetCursorPos(int(WIDTH / 2), int(HEIGHT / 2))
+                    # print("La couleur du pixel central est [75, 219, 106]")
+                # simule un clic de souris
+                user32.mouse_event(2, 0, 0, 0, 0)
 
-            # Affiche la couleur du pixel au centre de l'écran
-            print("Couleur du pixel central:", pixel_color)
-
-            time.sleep(0.1)  # Légère pause pour réduire l'utilisation du processeur
 
 main()
