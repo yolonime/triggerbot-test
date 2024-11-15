@@ -37,6 +37,7 @@ def main():
                 # La souris se déplace au centre de l'écran
                     # user32.SetCursorPos(int(WIDTH / 2), int(HEIGHT / 2))
                     # print("La couleur du pixel central est [75, 219, 106]")
+<<<<<<< HEAD
                 # simule un clic de espace
 
                 #print("Clic de souris")
@@ -51,6 +52,11 @@ def main():
                 
                 
 
+=======
+                # simule un clic de souris
+                user32.mouse_event(2, 0, 0, 0, 0)
+                user32.mouse_event(4, 0,0 ,0, 0)
+>>>>>>> bea53c7ef8460c912a5adcbc6df4950d28e32b5c
 
 
 main()
