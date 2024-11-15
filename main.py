@@ -31,6 +31,7 @@ def main():
                     # print("La couleur du pixel central est [75, 219, 106]")
                 # simule un clic de souris
                 user32.mouse_event(2, 0, 0, 0, 0)
+                user32.mouse_event(4, 0,0 ,0, 0)
 
 
 main()
