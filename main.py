@@ -1,6 +1,11 @@
 import numpy as np
 from mss import mss
 from ctypes import WinDLL
+from keyboard import *
+
+
+
+
 
 # Obtenir les dimensions de l'écran
 user32 = WinDLL("user32", use_last_error=True)
@@ -22,15 +27,30 @@ def main():
         while True:
             # Capture un seul pixel au centre de l'écran
             img = np.array(sct.grab(CENTER_PIXEL))[:, :, :3]  # Récupère uniquement les valeurs RGB
-
+            #print("Couleur du pixel central:", img)
             # Le pixel capturé est la couleur du centre
             pixel_color = img[0, 0]  # Couleur du pixel unique au centre
-            if np.array_equal(pixel_color, [106, 219, 75]):
+            #if np.array_equal(pixel_color, [106, 219, 75]): 
+            #IF COULEUR VIOLETTE AVEC DE LA TOLERANCE
+            if np.all(np.abs(pixel_color - [250, 100, 250]) < 70):
+                
                 # La souris se déplace au centre de l'écran
                     # user32.SetCursorPos(int(WIDTH / 2), int(HEIGHT / 2))
                     # print("La couleur du pixel central est [75, 219, 106]")
-                # simule un clic de souris
-                user32.mouse_event(2, 0, 0, 0, 0)
+                # simule un clic de espace
+
+                #print("Clic de souris")
+                try :
+                    press_and_release('p')
+                    
+                except Exception as e:
+                    print(e)
+
+
+                #appuyer sur la touche "espace" avec user 32 et keybd_event
+                
+                
+
 
 
 main()
