@@ -22,6 +22,7 @@ def main():
     print ("Début du programme")
     with mss() as sct:
         while True:
-            click()
-
+            if keyboard.is_pressed('a'):
+                while keyboard.is_pressed('a'):
+                    click()
 main()
